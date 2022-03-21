@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
-function ArticleView(props) {
-    return (
-        <div>
-            
-        </div>
-    );
+function ArticleView() {
+  return <div></div>;
 }
 
 export default ArticleView;
