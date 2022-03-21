@@ -1,7 +1,7 @@
 const articles = [
   {
     id: 1,
-    title: "some title displayed here",
+    title: "some title displayed herec cccccc cccccccc ccccccc",
     description:
       "description ",
   },
