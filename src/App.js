@@ -23,13 +23,14 @@ function App() {
     <div className="App">
       <ToastContainer position="bottom-right" autoClose={1000} limit={2} />
       <Modal
+        showCloseIcon={false}
         classNames={{
           modal: "article-add-container",
         }}
         open={addArticleModal}
         onClose={closeAddModal}
       >
-        <ArticleAdd />
+        <ArticleAdd closeAddModal={closeAddModal} />
       </Modal>
       <Header toggleAddModal={toggleAddModal} />
       <Routes>

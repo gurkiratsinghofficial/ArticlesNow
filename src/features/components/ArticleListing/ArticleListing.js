@@ -1,9 +1,9 @@
-import React from "react";
-import { AiTwotoneDelete } from "react-icons/ai";
+import React, { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { removeArticle } from "../../articleSlice";
 import { FcCancel } from "react-icons/fc";
+import MemoizedArticleListingItem from "../ArticleListingItem/ArticleListingItem";
 
 function ArticleListing(props) {
   const articles = useSelector((state) => state.article.articles);
@@ -11,16 +11,21 @@ function ArticleListing(props) {
   const minDescLength = 40;
   const minTitleLength = 28;
 
-  const renderSeeMore = (item) => {
-    return <Link to={`/view/${item.id}`}>See more...</Link>;
-  };
+  const renderSeeMore = useCallback(
+    (item) => <Link to={`/view/${item.id}`}>See more...</Link>,
+    []
+  );
 
-  const renderEllipses = (item) => {
-    if (item.title.length > minTitleLength) return "...";
-  };
-  const deleteArticle = (id) => {
-    dispatch(removeArticle(id));
-  };
+  const renderEllipses = useCallback(
+    (item) => item.title.length > minTitleLength && "...",
+    [minTitleLength]
+  );
+
+  const deleteArticle = useCallback(
+    (id) => dispatch(removeArticle(id)),
+    [dispatch]
+  );
+
   if (articles.length)
     return (
       <>
@@ -35,19 +40,16 @@ function ArticleListing(props) {
             ?.slice()
             .reverse()
             .map((item, ind) => (
-              <div key={item.id}>
-                <span> {ind + 1}.</span>
-                <span>
-                  {item.title.slice(0, minTitleLength)} {renderEllipses(item)}
-                </span>
-                <span>
-                  {item.description.slice(0, minDescLength)}{" "}
-                  {renderSeeMore(item)}
-                </span>
-                <span onClick={() => deleteArticle(item.id)}>
-                  <AiTwotoneDelete />
-                </span>
-              </div>
+              <MemoizedArticleListingItem
+                key={item.id}
+                item={item}
+                ind={ind}
+                minTitleLength={minTitleLength}
+                minDescLength={minDescLength}
+                renderEllipses={renderEllipses}
+                renderSeeMore={renderSeeMore}
+                deleteArticle={deleteArticle}
+              />
             ))}
         </div>
       </>

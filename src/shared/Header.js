@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { MdArticle } from "react-icons/md";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 function Header({ toggleAddModal }) {
   const navigate = useNavigate();
-  const openAddModal = () => toggleAddModal(true);
 
-  const redirectToHome = () => {
-    navigate("/");
-  };
+  const openAddModal = useCallback(
+    () => toggleAddModal(true),
+    [toggleAddModal]
+  );
+  const redirectToHome = useCallback(() => navigate("/"), [navigate]);
   return (
     <div className="header">
       <div onClick={redirectToHome}>

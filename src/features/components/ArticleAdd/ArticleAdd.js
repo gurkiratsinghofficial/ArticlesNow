@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import validationSchemas from "../../../utils/validationSchemas";
 import { addArticle } from "../../articleSlice";
 
-function ArticleAdd() {
+function ArticleAdd({ closeAddModal }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
@@ -23,7 +23,7 @@ function ArticleAdd() {
               navigate("/");
             }}
           >
-            {({ handleBlur, handleChange, submitForm }) => (
+            {({ handleChange, submitForm }) => (
               <>
                 <input
                   name="title"
@@ -31,7 +31,6 @@ function ArticleAdd() {
                   type="text"
                   placeholder="Title"
                   onChange={handleChange}
-                  onBlur={handleBlur}
                 />
                 <ErrorMessage
                   name="title"
@@ -44,14 +43,15 @@ function ArticleAdd() {
                   placeholder="Write decription here..."
                   rows="7"
                   onChange={handleChange}
-                  onBlur={handleBlur}
                 />
                 <ErrorMessage
                   name="description"
                   render={(msg) => <span className="error">{msg}</span>}
                 />
                 <div className="article-buttons">
-                  <button className="button">Cancel</button>
+                  <button className="button" onClick={closeAddModal}>
+                    Cancel
+                  </button>
                   <button onClick={submitForm} className="button">
                     Submit
                   </button>

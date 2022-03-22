@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { setViewArticle } from "../../articleSlice";
 
 function ArticleView() {
@@ -10,23 +11,26 @@ function ArticleView() {
   const params = useParams();
   const dispatch = useDispatch();
 
-  const redirectToHome = () => {
-    navigate("/");
-  };
+  const redirectToHome = useCallback(() => navigate("/"), [navigate]);
+
   useEffect(() => {
     if (params.id) {
       const articleFound = articles.find(
         (article) => String(article.id) === params.id
       );
-      if (articleFound) dispatch(setViewArticle(articleFound));
-      else redirectToHome();
+      if (articleFound) {
+        dispatch(setViewArticle(articleFound));
+        return;
+      }
+      toast.error("Article Not Found");
+      redirectToHome();
     }
-  }, [articles, dispatch, params.id]);
+  }, [articles, dispatch, params.id, redirectToHome]);
 
   return (
     <div className="article-view-container">
       <div>
-        <img src="/ArticleCover.jpeg" alt="main" />
+        <img src="/ArticleCover.png" alt="main" />
       </div>
       <span onClick={redirectToHome}>
         <RiArrowGoBackFill />
