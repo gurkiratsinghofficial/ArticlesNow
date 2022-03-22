@@ -3,6 +3,7 @@ import { AiTwotoneDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { removeArticle } from "../../articleSlice";
+import { FcCancel } from "react-icons/fc";
 
 function ArticleListing(props) {
   const articles = useSelector((state) => state.article.articles);
@@ -15,7 +16,6 @@ function ArticleListing(props) {
   };
 
   const renderEllipses = (item) => {
-    console.log(item.title.length);
     if (item.title.length > minTitleLength) return "...";
   };
   const deleteArticle = (id) => {
@@ -31,25 +31,36 @@ function ArticleListing(props) {
           <span>Actions</span>
         </div>
         <div className="article-listing-container">
-          {articles?.map((item) => (
-            <div key={item.id}>
-              <span> {item.id}.</span>
-              <span>
-                {item.title.slice(0, minTitleLength)} {renderEllipses(item)}
-              </span>
-              <span>
-                {item.description.slice(0, minDescLength)} {renderSeeMore(item)}
-              </span>
-              <span onClick={() => deleteArticle(item.id)}>
-                <AiTwotoneDelete />
-              </span>
-            </div>
-          ))}
+          {articles
+            ?.slice()
+            .reverse()
+            .map((item, ind) => (
+              <div key={item.id}>
+                <span> {ind + 1}.</span>
+                <span>
+                  {item.title.slice(0, minTitleLength)} {renderEllipses(item)}
+                </span>
+                <span>
+                  {item.description.slice(0, minDescLength)}{" "}
+                  {renderSeeMore(item)}
+                </span>
+                <span onClick={() => deleteArticle(item.id)}>
+                  <AiTwotoneDelete />
+                </span>
+              </div>
+            ))}
         </div>
       </>
     );
 
-  return <div className="article-listing-header">Nothing to show here</div>;
+  return (
+    <>
+      <div className="article-listing-empty">
+        <FcCancel />
+        Nothing here to show!
+      </div>
+    </>
+  );
 }
 
 export default ArticleListing;

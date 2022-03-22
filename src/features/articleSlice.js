@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 import articles from "../utils/dummy";
 
 const initialState = {
@@ -14,7 +14,8 @@ export const articleSlice = createSlice({
   initialState,
   reducers: {
     addArticle: (state, action) => {
-      state.articles.push(action.payload);
+      state.articles.push({ ...action.payload, id: nanoid() });
+      state.addArticleModal = false;
     },
     removeArticle: (state, action) => {
       state.articles = state.articles.filter(
@@ -22,7 +23,6 @@ export const articleSlice = createSlice({
       );
     },
     setViewArticle: (state, action) => {
-      console.log(action.payload);
       state.viewArticle = action.payload;
     },
     setAddArticleModal: (state, action) => {

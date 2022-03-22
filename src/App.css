@@ -12,18 +12,28 @@ html ::-webkit-scrollbar-thumb {
   background: #ff0000;
 }
 .header {
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 60px;
-  background-color: red;
+  background: rgb(0, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
   font-size: larger;
   position: sticky;
   top: 0;
   -webkit-box-shadow: 0px 10px 43px -5px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 10px 43px -5px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 10px 43px -5px rgba(0, 0, 0, 0.75);
+}
+.header > :first-child {
+  cursor: pointer;
 }
 .header :last-child svg {
   cursor: pointer;
@@ -69,6 +79,16 @@ html ::-webkit-scrollbar-thumb {
   position: sticky;
   top: 60px;
 }
+.article-listing-empty {
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.article-listing-empty svg {
+  font-size: 315px;
+}
 .article-listing-header {
   display: flex;
   justify-content: space-around;
@@ -93,7 +113,7 @@ html ::-webkit-scrollbar-thumb {
   display: flex;
   justify-content: center;
 }
-.article-listing-container > :nth-child(even) {
+.article-listing-container > :nth-child(odd) {
   background-color: #dbdbdb;
 }
 .article-listing-container svg {
@@ -112,7 +132,7 @@ html ::-webkit-scrollbar-thumb {
   outline: none;
   border: none;
   border-bottom: 1px solid #dbdbdb;
-  font-size: xx-large;
+  font-size: x-large;
   resize: none;
 }
 .styledInput :hover {
@@ -139,7 +159,7 @@ html ::-webkit-scrollbar-thumb {
   color: black;
 }
 .article-buttons > button:last-child {
-  background-color: #4caf50;
+  background-color: #090979;
 }
 .button:hover {
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
@@ -154,7 +174,6 @@ html ::-webkit-scrollbar-thumb {
 }
 .article-view-container img {
   object-fit: cover;
-  object-position: 0px -300px;
 }
 .article-view-container > span {
   margin: 10px;
@@ -178,4 +197,27 @@ html ::-webkit-scrollbar-thumb {
 .article-view-container > div {
   padding: 20px;
   text-transform: capitalize;
+  background: rgb(0, 0, 36);
+  color: white;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+.error {
+  color: red;
+}
+
+.not-found {
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: xx-large;
+}
+.not-found svg {
+  font-size: 300px;
 }

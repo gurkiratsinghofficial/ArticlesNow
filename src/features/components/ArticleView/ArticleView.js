@@ -18,9 +18,9 @@ function ArticleView() {
       const articleFound = articles.find(
         (article) => String(article.id) === params.id
       );
-      console.log(articleFound);
       if (articleFound) dispatch(setViewArticle(articleFound));
-    } else redirectToHome();
+      else redirectToHome();
+    }
   }, [articles, dispatch, params.id]);
 
   return (
@@ -31,7 +31,7 @@ function ArticleView() {
       </span>
       <div>
         <h1>{viewArticle?.title}</h1>
-        <p>{viewArticle?.description}</p>
+        <i>{viewArticle?.description}</i>
       </div>
     </div>
   );
