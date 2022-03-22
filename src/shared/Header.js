@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { MdArticle } from "react-icons/md";
 import { BsFillPlusCircleFill } from "react-icons/bs";
+import { BsGithub } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 function Header({ toggleAddModal }) {
@@ -17,6 +18,9 @@ function Header({ toggleAddModal }) {
         <MdArticle />
         <span>ArticlesNow</span>
       </div>
+      <a href="https://github.com/gurkiratsinghofficial/ArticlesNow">
+        <BsGithub />
+      </a>
       <div onClick={openAddModal}>
         <BsFillPlusCircleFill />
       </div>
