@@ -1,6 +1,6 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import articles from "../utils/dummy";
+import articles from "../../utils/dummy";
 
 const initialState = {
   articles: [...articles],

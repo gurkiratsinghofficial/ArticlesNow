@@ -2,7 +2,7 @@ import { ErrorMessage, Formik } from "formik";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import validationSchemas from "../../../utils/validationSchemas";
+import validationSchemas from "../../../../utils/validationSchemas";
 import { addArticle } from "../../articleSlice";
 
 function ArticleAdd({ closeAddModal }) {

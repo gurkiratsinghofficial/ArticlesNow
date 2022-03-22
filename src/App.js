@@ -1,12 +1,12 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import ArticleListing from "./features/components/ArticleListing/ArticleListing";
-import ArticleView from "./features/components/ArticleView/ArticleView";
+import ArticleListing from "./features/article/components/ArticleListing/ArticleListing";
+import ArticleView from "./features/article/components/ArticleView/ArticleView";
 import Header from "./shared/Header";
-import { setAddArticleModal } from "./features/articleSlice";
+import { setAddArticleModal } from "./features/article/articleSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "react-responsive-modal";
-import ArticleAdd from "./features/components/ArticleAdd/ArticleAdd";
+import ArticleAdd from "./features/article/components/ArticleAdd/ArticleAdd";
 import "react-responsive-modal/styles.css";
 import NotFound from "./shared/NotFound";
 import "react-toastify/dist/ReactToastify.css";
