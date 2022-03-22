@@ -8,7 +8,7 @@ const validationSchemas = {
       .required("Please enter a title!"),
     description: Yup.string()
       .min(2, "Too Short!")
-      .max(50, "Too Long!")
+      .max(500, "Too Long!")
       .required("Please enter a description!"),
   }),
 };

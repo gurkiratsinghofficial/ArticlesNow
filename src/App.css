@@ -12,6 +12,7 @@ html ::-webkit-scrollbar-thumb {
   background: #ff0000;
 }
 .header {
+  z-index: 1;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -167,10 +168,13 @@ html ::-webkit-scrollbar-thumb {
 }
 .article-view-container {
   width: 100%;
-  height: 200px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
+}
+.article-view-container> :first-child{
+  height: 45%;
 }
 .article-view-container img {
   object-fit: cover;
@@ -194,8 +198,9 @@ html ::-webkit-scrollbar-thumb {
   backdrop-filter: blur(5px);
 }
 
-.article-view-container > div {
+.article-view-container > :last-child {
   padding: 20px;
+  height: 100%;
   text-transform: capitalize;
   background: rgb(0, 0, 36);
   color: white;
@@ -220,4 +225,10 @@ html ::-webkit-scrollbar-thumb {
 }
 .not-found svg {
   font-size: 300px;
+}
+@media (max-width: 767px) {
+  .article-add-container{
+    width: 70%;
+    height: 50%;
+  }
 }

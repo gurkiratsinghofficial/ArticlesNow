@@ -9,6 +9,8 @@ import { Modal } from "react-responsive-modal";
 import ArticleAdd from "./features/components/ArticleAdd/ArticleAdd";
 import "react-responsive-modal/styles.css";
 import NotFound from "./shared/NotFound";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const addArticleModal = useSelector((state) => state.article.addArticleModal);
@@ -19,6 +21,7 @@ function App() {
   const closeAddModal = () => toggleAddModal(false);
   return (
     <div className="App">
+      <ToastContainer position="bottom-right" autoClose={1000} limit={2} />
       <Modal
         classNames={{
           modal: "article-add-container",

@@ -25,7 +25,9 @@ function ArticleView() {
 
   return (
     <div className="article-view-container">
-      <img src="/ArticleCover.jpeg" alt="main" />
+      <div>
+        <img src="/ArticleCover.jpeg" alt="main" />
+      </div>
       <span onClick={redirectToHome}>
         <RiArrowGoBackFill />
       </span>

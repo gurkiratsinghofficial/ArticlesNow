@@ -57,7 +57,7 @@ function ArticleListing(props) {
     <>
       <div className="article-listing-empty">
         <FcCancel />
-        Nothing here to show!
+        Nothing to show here!
       </div>
     </>
   );
